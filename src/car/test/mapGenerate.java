@@ -61,7 +61,7 @@ class generateMap{
         step=1;
         for(int i=0;i<=maxNowY;i++){
             for(int j=0;j<=maxNowX;j++){
-                if(ifsafe(j,i)&&i<maxNowY
+                if(ifSafe(j,i)&&i<maxNowY
                    &&map[i-1][j-1]=='_'&&map[i-1][j]=='_'&&map[i-1][j+1]=='_'
                    &&map[i][j-1]=='_'&&map[i][j]=='_'&&map[i][j+1]=='_'
                    &&map[i+1][j]=='_'&&map[i+1][j]=='_'&&map[i+1][j+1]=='_')
@@ -71,12 +71,12 @@ class generateMap{
             }
         }
     }
-    public boolean ifsafe(int nowX,int nowY){
+    public boolean ifSafe(int nowX,int nowY){
         return nowX>0&&nowX<maxNowX&&nowY>0&&nowY<=maxNowY&&step!=0;
     }
     public void mode1(){
         //上一格
-        if(ifsafe(nowX,nowY-1)&&nowY!=maxNowY)
+        if(ifSafe(nowX,nowY-1)&&nowY!=maxNowY)
         {
             step++;
             map[--nowY][nowX]='_';
@@ -85,7 +85,7 @@ class generateMap{
     }
     public void mode2(){
         //下一格
-        if(ifsafe(nowX,nowY+1))
+        if(ifSafe(nowX,nowY+1))
             if((nowY+1==maxNowY&&step>maxStep)||nowY!=maxNowY)
             {
                 step++;
@@ -94,14 +94,14 @@ class generateMap{
     }
     public void mode3(){
         //左一格
-        if(ifsafe(nowX-1,nowY)&&nowY!=maxNowY) {
+        if(ifSafe(nowX-1,nowY)&&nowY!=maxNowY) {
             step++;
             map[nowY][--nowX] = '_';
         }
     }
     public void mode4(){
         //右一格
-        if(ifsafe(nowX+1,nowY)&&nowY!=maxNowY) {
+        if(ifSafe(nowX+1,nowY)&&nowY!=maxNowY) {
             step++;
             map[nowY][++nowX] = '_';
         }
@@ -109,36 +109,36 @@ class generateMap{
     public void mode5(){
         //兩格
         switch ((int)(Math.random()*4)+1){
-            case 1:if(ifsafe(nowX,nowY-2)){mode1();mode1();}
-            case 2:if(ifsafe(nowX,nowY+2)){mode2();mode2();}
-            case 3:if(ifsafe(nowX-2,nowY)){mode3();mode3();}
-            case 4:if(ifsafe(nowX+2,nowY)){mode4();mode4();}
+            case 1:if(ifSafe(nowX,nowY-2)){mode1();mode1();}
+            case 2:if(ifSafe(nowX,nowY+2)){mode2();mode2();}
+            case 3:if(ifSafe(nowX-2,nowY)){mode3();mode3();}
+            case 4:if(ifSafe(nowX+2,nowY)){mode4();mode4();}
         }
     }
     public void mode6(){
         //L型
         switch ((int)(Math.random()*8)+1){
-            case 1:if(ifsafe(nowX+1,nowY-2)){mode1();mode1();mode4();}
-            case 2:if(ifsafe(nowX-1,nowY-2)){mode1();mode1();mode3();}
-            case 3:if(ifsafe(nowX+1,nowY+2)){mode2();mode2();mode4();}
-            case 4:if(ifsafe(nowX-1,nowY+2)){mode2();mode2();mode3();}
-            case 5:if(ifsafe(nowX-2,nowY+1)){mode3();mode3();mode2();}
-            case 6:if(ifsafe(nowX-2,nowY-1)){mode3();mode3();mode1();}
-            case 7:if(ifsafe(nowX+2,nowY+1)){mode4();mode4();mode2();}
-            case 8:if(ifsafe(nowX+2,nowY-1)){mode4();mode4();mode1();}
+            case 1:if(ifSafe(nowX+1,nowY-2)){mode1();mode1();mode4();}
+            case 2:if(ifSafe(nowX-1,nowY-2)){mode1();mode1();mode3();}
+            case 3:if(ifSafe(nowX+1,nowY+2)){mode2();mode2();mode4();}
+            case 4:if(ifSafe(nowX-1,nowY+2)){mode2();mode2();mode3();}
+            case 5:if(ifSafe(nowX-2,nowY+1)){mode3();mode3();mode2();}
+            case 6:if(ifSafe(nowX-2,nowY-1)){mode3();mode3();mode1();}
+            case 7:if(ifSafe(nowX+2,nowY+1)){mode4();mode4();mode2();}
+            case 8:if(ifSafe(nowX+2,nowY-1)){mode4();mode4();mode1();}
         }
     }
     public void mode7(){
         //長L型
         switch ((int)(Math.random()*8)+1){
-            case 1:if(ifsafe(nowX+2,nowY-2)){mode1();mode1();mode4();mode4();}
-            case 2:if(ifsafe(nowX-2,nowY-2)){mode1();mode1();mode3();mode3();}
-            case 3:if(ifsafe(nowX+2,nowY+2)){mode2();mode2();mode4();mode4();}
-            case 4:if(ifsafe(nowX-2,nowY+2)){mode2();mode2();mode3();mode3();}
-            case 5:if(ifsafe(nowX-2,nowY+2)){mode3();mode3();mode2();mode2();}
-            case 6:if(ifsafe(nowX-2,nowY-2)){mode3();mode3();mode1();mode1();}
-            case 7:if(ifsafe(nowX+2,nowY+2)){mode4();mode4();mode2();mode2();}
-            case 8:if(ifsafe(nowX+2,nowY-2)){mode4();mode4();mode1();mode1();}
+            case 1:if(ifSafe(nowX+2,nowY-2)){mode1();mode1();mode4();mode4();}
+            case 2:if(ifSafe(nowX-2,nowY-2)){mode1();mode1();mode3();mode3();}
+            case 3:if(ifSafe(nowX+2,nowY+2)){mode2();mode2();mode4();mode4();}
+            case 4:if(ifSafe(nowX-2,nowY+2)){mode2();mode2();mode3();mode3();}
+            case 5:if(ifSafe(nowX-2,nowY+2)){mode3();mode3();mode2();mode2();}
+            case 6:if(ifSafe(nowX-2,nowY-2)){mode3();mode3();mode1();mode1();}
+            case 7:if(ifSafe(nowX+2,nowY+2)){mode4();mode4();mode2();mode2();}
+            case 8:if(ifSafe(nowX+2,nowY-2)){mode4();mode4();mode1();mode1();}
         }
     }
 }
