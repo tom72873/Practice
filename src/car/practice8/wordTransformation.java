@@ -1,15 +1,12 @@
 package car.practice8;
-import java.util.HashMap;
+import java.util.*;
 import java.lang.String;
-import java.util.Scanner;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Iterator;
 
 import static java.lang.System.out;
 
 public class wordTransformation {
     static String[][] resultMap;
+    static Map<String,Integer> reverseDictionary;
 
     public static void main(String[] args) {
         HashMap<Integer, String> stringHashMap = new HashMap<>();
@@ -25,6 +22,7 @@ public class wordTransformation {
                 if (string.equals("\n"))
                     string = scanner.nextLine();
                 stringHashMap.put(n, string);
+                reverseDictionary.put(string,n);
                 n++;//save dictionary
             }
             stringHashMapSize = stringHashMap.size();
@@ -86,6 +84,10 @@ public class wordTransformation {
                     charMap[j] = '?';
                 }
             }
+        }
+        if(same==string.length()-1){
+            resultMap[reverseDictionary.get(string)][reverseDictionary.get(map)]="1";
+            resultMap[reverseDictionary.get(map)][reverseDictionary.get(string)]="1";
         }
         return same == string.length()-1;
     }
